@@ -7,6 +7,8 @@ cmake_minimum_required(VERSION 3.1.3)
 set(CMAKE_CXX_STANDARD 11)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+option(BUILD_PARSERS "Build URDF and YAML parsers" ON)
+
 include(cmake/base.cmake)
 include(cmake/cython/cython.cmake)
 include(cmake/msvc-specific.cmake)

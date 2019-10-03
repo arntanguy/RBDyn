@@ -1,0 +1,19 @@
+/*
+ * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ */
+
+#pragma once
+
+#ifdef WIN32
+#  define RBDYNPARSERS_DLLIMPORT __declspec(dllimport)
+#  define RBDYNPARSERS_DLLEXPORT __declspec(dllexport)
+#else
+#  define RBDYNPARSERS_DLLIMPORT
+#  define RBDYNPARSERS_DLLEXPORT
+#endif
+
+#ifdef RBDYNPARSERS_BUILDING
+#  define RBDYNPARSERS_API RBDYNPARSERS_DLLEXPORT
+#else
+#  define RBDYNPARSERS_API RBDYNPARSERS_DLLIMPORT
+#endif

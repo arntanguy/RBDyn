@@ -16,7 +16,7 @@ else()
 endif()
 
 set(SOURCES urdf.cpp yaml.cpp)
-set(HEADERS RBDyn/parsers/common.h RBDyn/parsers/urdf.h RBDyn/parsers/yaml.h)
+set(HEADERS RBDyn/parsers/api.h RBDyn/parsers/common.h RBDyn/parsers/urdf.h RBDyn/parsers/yaml.h)
 
 add_library(RBDynParsers SHARED ${SOURCES} ${HEADERS})
 target_include_directories(RBDynParsers PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include> $<INSTALL_INTERFACE:include>)
@@ -31,4 +31,4 @@ install(
     ARCHIVE DESTINATION "lib"
     RUNTIME DESTINATION "bin"
 )
-install(FILES ${HEADERS} DESTINATION ${INCLUDE_INSTALL_DESTINATION})
+install(FILES ${HEADERS} DESTINATION ${INCLUDE_INSTALL_DESTINATION}/parsers)

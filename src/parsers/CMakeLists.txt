@@ -2,8 +2,18 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-find_package(tinyxml2 REQUIRED)
 find_package(yaml-cpp REQUIRED)
+
+
+find_package(tinyxml2 QUIET)
+if(NOT ${tinyxml2_FOUND})
+  find_package(RBDyn_TinyXML2 REQUIRED)
+  install(FILES "${PROJECT_SOURCE_DIR}/CMakeModules/FindRBDyn_TinyXML2.cmake"
+          DESTINATION "${CONFIG_INSTALL_DIR}")
+  set(PACKAGE_EXTRA_MACROS "include(\${CMAKE_CURRENT_LIST_DIR}/FindRBDyn_TinyXML2.cmake)")
+else()
+  add_project_dependency(tinyxml2 REQUIRED)
+endif()
 
 set(SOURCES urdf.cpp yaml.cpp)
 set(HEADERS RBDyn/parsers/common.h RBDyn/parsers/urdf.h RBDyn/parsers/yaml.h)
